@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const signup = require("./routes/signup");
@@ -8,7 +10,7 @@ const app = express();
 
 mongoose.set("strictQuery", true);
 mongoose
-  .connect("mongodb://127.0.0.1:27017/authentication")
+  .connect(process.env.db)
   .then(() => {
     const port = process.env.PORT || 3001;
 
