@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const signup = require("./routes/signup");
 const login = require("./routes/login");
 const update = require("./routes/update");
@@ -19,6 +20,7 @@ mongoose
   })
   .catch(() => console.log("Could not connrct to MongoDB..."));
 
+app.use(cors());
 app.use(express.json());
 app.use("/signup", signup);
 app.use("/login", login);
